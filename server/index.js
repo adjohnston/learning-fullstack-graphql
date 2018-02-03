@@ -1,4 +1,4 @@
-const micro = require('micro')
+const { send } = require('micro')
 const { get, post, router } = require('microrouter')
 const { microGraphql, microGraphiql } = require('apollo-server-micro')
 const { makeExecutableSchema } = require('graphql-tools')
@@ -40,15 +40,9 @@ const schema = makeExecutableSchema({
 const graphqlHandler = microGraphql({ schema })
 const graphiqlHandler = microGraphiql({ endpointURL: '/graphql' })
 
-const server = micro(
-  router(
-    get(`/graphql`, graphqlHandler),
-    post(`/graphql`, graphqlHandler),
-    get(`/graphiql`, graphiqlHandler),
-    (request, response) => micro.send(response, 404, 'not found')
-  )
+module.exports = router(
+  get(`/graphql`, graphqlHandler),
+  post(`/graphql`, graphqlHandler),
+  get(`/graphiql`, graphiqlHandler),
+  (request, response) => send(response, 404, 'not found')
 )
-
-server.listen(8080)
-
-module.exports = () => {}
