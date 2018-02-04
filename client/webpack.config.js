@@ -1,6 +1,9 @@
 const resolve = require('path').resolve
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+// the weird string replace is necessary due to a TS issue with a package used
+// by Apollo Link
+// https://github.com/apollographql/apollo-link/issues/248
 module.exports = {
   entry: resolve(__dirname, 'src/index.js'),
 
@@ -12,9 +15,6 @@ module.exports = {
   module: {
     rules: [
       { test: /\.js$/, use: 'babel-loader' },
-
-      // necessary due to a TS issue with a package used by Apollo Link
-      // https://github.com/apollographql/apollo-link/issues/248
       {
         test: /node_modules\/apollo-link.*?\/lib\/.*?.js/,
         loader: 'string-replace-loader',

@@ -1,6 +1,20 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { ApolloProvider } from 'react-apollo'
+import { ApolloClient } from 'apollo-client'
+import { ApolloLink } from 'apollo-link'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import App from './components/App'
 
-const App = () => <div>I live</div>
+const client = new ApolloClient({
+  link: new HttpLink({ uri: 'http://localhost:3000/graphql' }),
+  cache: new InMemoryCache(),
+})
 
-render(<App />, document.getElementById('root'))
+render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById('root')
+)
