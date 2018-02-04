@@ -11,6 +11,6 @@ const QUERY = gql`
   }
 `
 
-const App = () => <div>I live</div>
+const App = props => <div>{JSON.stringify(props)}</div>
 
 export default graphql(QUERY)(App)
