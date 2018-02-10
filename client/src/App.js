@@ -11,6 +11,10 @@ const QUERY = gql`
   }
 `
 
-const App = props => <div>{JSON.stringify(props)}</div>
+const App = ({ data: { loading, names } }) => {
+  if (loading) return <div>Loading…</div>
+
+  return names.map(({ name, id }) => <div key={id}>{name}</div>)
+}
 
 export default graphql(QUERY)(App)
