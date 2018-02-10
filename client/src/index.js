@@ -7,7 +7,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import App from './App'
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://server-uidcvohsnu.now.sh/graphql' }),
+  link: new HttpLink({ uri: 'https://server-jmmjbhdqqr.now.sh/graphql' }),
   cache: new InMemoryCache(),
 })
 
