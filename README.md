@@ -8,7 +8,8 @@ Getting an understanding of how to create a server &amp; client side using graph
 
 * Apollo Server
 * Zeit Micro
-* (no DB… yet!)
+* Docker
+* MongoDB/Mongoose
 
 ### Frontend
 
