@@ -2,6 +2,7 @@ const { send } = require('micro')
 const { get, post, options, router } = require('microrouter')
 const { microGraphql, microGraphiql } = require('apollo-server-micro')
 const schema = require('./src/schema')
+const db = require('./db')
 
 const withCors = handler => (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*')

@@ -1,8 +1,10 @@
-const data = require('../seed-data')
+const nameModel = require('../db/models/name')
 
 const resolvers = {
   Query: {
-    names: () => data.names,
+    names: () => {
+      return nameModel.find()
+    },
   },
 }
 
