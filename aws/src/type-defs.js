@@ -1,11 +1,10 @@
 const typeDefs = `
   type Name {
-    id: ID!,
     name: String!
   }
 
   type Query {
-    names: [Name]
+    names(name: String): [Name]
   }
 
   type Mutation {
