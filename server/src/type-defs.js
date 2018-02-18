@@ -7,6 +7,10 @@ const typeDefs = `
   type Query {
     names: [Name]
   }
+
+  type Mutation {
+    createName(name: String!): Name
+  }
 `
 
 module.exports = typeDefs

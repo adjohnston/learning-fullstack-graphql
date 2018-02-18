@@ -6,6 +6,12 @@ const resolvers = {
       return nameModel.find()
     },
   },
+
+  Mutation: {
+    createName: (root, { name }) => {
+      return nameModel.create({ name })
+    },
+  },
 }
 
 module.exports = resolvers
