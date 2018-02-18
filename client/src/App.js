@@ -18,7 +18,7 @@ const App = () => (
 
       if (error) return null
 
-      if (data.names === 0)
+      if (data.names.length === 0)
         return (
           <div>
             There are no names yet{' '}
