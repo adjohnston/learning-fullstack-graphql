@@ -20,6 +20,7 @@ service: aws
 provider:
   name: aws
   runtime: nodejs6.10
+  profile: 'learning-fullstack-apollo'
 
 # you can overwrite defaults here
 #  stage: dev
@@ -55,9 +56,26 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  graphql:
+    handler: handler.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: get
+          cors: true
 
+      - http:
+          path: graphql
+          method: post
+          cors: true
+
+  graphiql:
+    handler: handler.graphiqlHandler
+    events:
+      - http:
+          path: graphiql
+          method: get
+          cors: true
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
