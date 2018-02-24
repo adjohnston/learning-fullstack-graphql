@@ -1,12 +1,14 @@
 const AWS = require('aws-sdk')
 const dynamoDB = new AWS.DynamoDB.DocumentClient()
 
+const namesTable = process.env.NAMES_TABLE
+
 const resolvers = {
   Query: {
     names: (root, { name }) => {
       return dynamoDB
         .scan({
-          TableName: 'names',
+          TableName: namesTable,
           Item: {
             name,
           },
@@ -19,7 +21,7 @@ const resolvers = {
     createName: (root, { name }) => {
       return dynamoDB
         .put({
-          TableName: 'names',
+          TableName: namesTable,
           Item: {
             name,
           },
