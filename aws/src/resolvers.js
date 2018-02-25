@@ -1,10 +1,6 @@
 const { DynamoDB } = require('aws-sdk')
 
-const dynamoDB = new DynamoDB.DocumentClient({
-  region: 'localhost',
-  endpoint: 'http://localhost:8000',
-})
-
+const dynamoDB = new DynamoDB.DocumentClient()
 const namesTable = process.env.NAMES_TABLE
 
 const resolvers = {
