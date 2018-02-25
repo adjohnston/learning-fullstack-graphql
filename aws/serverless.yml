@@ -4,13 +4,20 @@ plugins:
   - serverless-dynamodb-local
   - serverless-offline
 
+custom:
+  namesTable: ${self:service}-${opt:stage, self:provider.stage}-names
+  dynamodb:
+    start:
+      inMemory: true
+      migrate: true
+
 provider:
   name: aws
   runtime: nodejs6.10
   profile: learning-fullstack-apollo
   stage: dev
   environment:
-    NAMES_TABLE: ${self:service}-${opt:stage, self:provider.stage}-names
+    NAMES_TABLE: ${self:custom.namesTable}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -21,6 +28,12 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.NAMES_TABLE}"
+
+      # Resource:
+      #   Fn::Join:
+      #     - ''
+      #     - - 'arn:aws:dynamodb:::'
+      #       - Ref: NamesTable
 
 functions:
   graphql:

@@ -12,5 +12,5 @@ module.exports = {
 
     return graphqlLambda({ schema })(event, context, callbackFilter)
   },
-  graphiqlHandler: graphiqlLambda({ endpointURL: '/dev/graphql' }),
+  graphiqlHandler: graphiqlLambda({ endpointURL: 'graphql' }),
 }
