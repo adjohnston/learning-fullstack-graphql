@@ -4,7 +4,7 @@ import { gql } from 'apollo-boost'
 
 const QUERY = gql`
   {
-    names {
+    getNames {
       name
     }
   }
@@ -17,7 +17,7 @@ const App = () => (
 
       if (error) return null
 
-      if (data.names.length === 0)
+      if (data.getNames.length === 0)
         return (
           <div>
             There are no names yet{' '}
@@ -31,7 +31,9 @@ const App = () => (
           </div>
         )
 
-      return data.names.map(({ name, id }) => <div key={id}>{name}</div>)
+      return data.getNames.map(({ name }, index) => (
+        <div key={index}>{name}</div>
+      ))
     }}
   </Query>
 )
