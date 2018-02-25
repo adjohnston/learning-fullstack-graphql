@@ -9,6 +9,8 @@
     "graphql-tools": "^2.21.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.197.0"
+    "aws-sdk": "^2.197.0",
+    "serverless-dynamodb-local": "^0.2.27",
+    "serverless-offline": "^3.18.0"
   }
 }

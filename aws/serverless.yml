@@ -1,9 +1,14 @@
 service: aws
 
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
 provider:
   name: aws
   runtime: nodejs6.10
-  profile: 'learning-fullstack-apollo'
+  profile: learning-fullstack-apollo
+  stage: dev
   environment:
     NAMES_TABLE: ${self:service}-${opt:stage, self:provider.stage}-names
   iamRoleStatements:
