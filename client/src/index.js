@@ -5,7 +5,7 @@ import ApolloClient from 'apollo-boost'
 import App from './App'
 
 const client = new ApolloClient({
-  uri: 'https://rlqzqsex11.execute-api.us-east-1.amazonaws.com/dev/graphql',
+  uri: 'https://ja6pcpfvwd.execute-api.us-east-1.amazonaws.com/dev/graphql',
 })
 
 render(
