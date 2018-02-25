@@ -9,15 +9,18 @@ const namesTable = process.env.NAMES_TABLE
 
 const resolvers = {
   Query: {
-    names: (root, { name }) => {
+    getNames: () => {
       return dynamoDB
-        .scan({
-          TableName: namesTable,
-          Item: {
-            name,
-          },
-        })
+        .scan({ TableName: namesTable })
         .promise()
+        .then(data => data.Items)
+    },
+
+    getName: (root, { name }) => {
+      return dynamoDB
+        .get({ TableName: namesTable, Key: { name } })
+        .promise()
+        .then(data => data.Item)
     },
   },
 

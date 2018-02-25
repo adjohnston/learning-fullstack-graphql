@@ -5,7 +5,6 @@ import { gql } from 'apollo-boost'
 const QUERY = gql`
   {
     names {
-      id
       name
     }
   }

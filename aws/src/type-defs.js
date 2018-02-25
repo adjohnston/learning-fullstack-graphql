@@ -4,7 +4,8 @@ const typeDefs = `
   }
 
   type Query {
-    names(name: String): [Name]
+    getNames: [Name]
+    getName(name: String!): Name
   }
 
   type Mutation {
