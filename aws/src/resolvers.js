@@ -22,14 +22,17 @@ const resolvers = {
 
   Mutation: {
     createName: (root, { name }) => {
+      const item = {
+        name,
+      }
+
       return dynamoDB
         .put({
           TableName: namesTable,
-          Item: {
-            name,
-          },
+          Item: item,
         })
         .promise()
+        .then(() => item)
     },
   },
 }
